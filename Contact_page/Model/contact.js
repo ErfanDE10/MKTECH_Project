@@ -5,7 +5,7 @@ const contactFormSchema = new mongoose.Schema({
   email: { type: String, required: true },
   phone: { type: String, required: true },
   message: { type: String, required: true },
-  lang: { type: String, default: 'en' }  // Default to English if not provided
+  lang: { type: String, default: 'en' } 
 }, { timestamps: true })
 
 module.exports = mongoose.model('ContactForm', contactFormSchema)

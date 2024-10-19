@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="map-section">
+      <h2>Our Support</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.5525!2d51.37037!3d35.7446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f907c13d!2zLocation!"
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </section>
+
+    <section class="contact-form">
+      <h3>Contact Us Form</h3>
+      <form action="/api/contact" method="post">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="ph1one" required>
+        
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section class="contact-info">
+      <ul>
+        <li>Technical Unit: 0912-123-4567</li>
+        <li>Sales Unit: 0912-789-6543</li>
+        <li>Support Unit: 0912-456-7891</li>
+        <li>Finance Unit: 0938-123-4567</li>
+      </ul>
+    </section>
+
+    <section class="blue-section">
+        <p>To receive a free quick consultation, please enter your information</p>
+        <form action="/api/quickconsult" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>All rights reserved &copy; 2024</p>
+  </footer>
+</body>
+</html>
+const Connect = require('./Model/contact')
+const QuickConsult = require('./Model/QuickConsultation')

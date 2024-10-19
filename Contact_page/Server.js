@@ -5,7 +5,7 @@ const path = require('path')
 const ContactForm = require('./Model/contact')  
 const QuickConsult = require('./Model/QuickConsultation')  
 
-mongoose.connect('mongodb+srv://ERFAN:erfan123@nodecourse.uj3xb.mongodb.net/MKtec?retryWrites=true&w=majority&appName=Nodecourse', {
+mongoose.connect('mongodb+srv://---:----@nodecourse.uj3xb.mongodb.net/MKtec?retryWrites=true&w=majority&appName=Nodecourse', {
 }).then(() => {
     console.log('Connected to MongoDB')
 }).catch((err) => {

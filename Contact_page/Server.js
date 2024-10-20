@@ -5,61 +5,75 @@ const path = require('path')
 const ContactForm = require('./Model/contact')  
 const QuickConsult = require('./Model/QuickConsultation')  
 
-mongoose.connect('mongodb+srv://---:----@nodecourse.uj3xb.mongodb.net/MKtec?retryWrites=true&w=majority&appName=Nodecourse', {
+mongoose.connect('mongodb+srv://ERFAN:erfan123@nodecourse.uj3xb.mongodb.net/MKtec?retryWrites=true&w=majority&appName=Nodecourse', {
 }).then(() => {
-    console.log('Connected to MongoDB')
+    console.log('connected to mongodb')
 }).catch((err) => {
-    console.log('error connecting to MongoDB:', err)
+    console.log('error connecting to mongodb:', err)
 })
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// front with EJS
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
+
+// front with react 
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/', (req, res) => {
     res.render('index');
 })
 
 app.post('/api/contact', async (req, res) => {
+    const { name, email, phone, message } = req.body;
+    let lang = req.body.lang || 'en';
+    let collection;
+
+    switch(lang) {
+        case 'en':
+            collection = mongoose.connection.collection('contacts_en');
+            break;
+        case 'fa':
+            collection = mongoose.connection.collection('contacts_fa');
+            break;
+        default:
+            return res.status(400).send('invalid language');
+    }
+
     try {
-        const { name, email, phone, message } = req.body
-
-        const newContact = new ContactForm({
-            name,
-            email,
-            phone,
-            message,
-            lang: 'en'  
-        })
-
-        await newContact.save();  
-
-        res.status(200).json({ message: 'contact form submitted successfully' })
+        await collection.insertOne({ name, email, phone, message });
+        res.status(200).send('message received');
     } catch (err) {
-        console.error('error saving contact form:', err)
-        res.status(500).json({ err: 'error submit contact form' })
+        console.log(err);
+        res.status(500).send('server error');
     }
 })
 
 app.post('/api/quickconsult', async (req, res) => {
+    const { phone, requestType, email } = req.body;
+    let lang = req.body.lang || 'en';
+    let collection;
+
+    switch(lang) {
+        case 'en':
+            collection = mongoose.connection.collection('quickconsult_en');
+            break;
+        case 'fa':
+            collection = mongoose.connection.collection('quickconsult_fa');
+            break;
+        default:
+            return res.status(400).send('invalid language');
+    }
+
     try {
-        const { name, email } = req.body
-
-        const newConsultation = new QuickConsult({
-            phone: email,  
-            requestType: 'quick consultation',
-            lang: 'en'  
-        })
-
-        await newConsultation.save();  
-
-        res.status(200).json({ message: 'quick consultation submitted successfully' })
-    } catch (err) {
-        console.error('error saving quick consultation:', err)
-        res.status(500).json({ err: 'error submitting quick consultation form' })
+        await collection.insertOne({ phone, requestType, email });
+        res.status(200).send('request received');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('server error');
     }
 })
 

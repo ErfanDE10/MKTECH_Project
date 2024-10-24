@@ -1,5 +1,5 @@
 ```markdown
-# Modular-MERN-Backend
+Modular-MERN-Backend
 
 Welcome to the Modular-MERN-Backend! This repository is a comprehensive and modular backend architecture tailored for MERN stack projects. The project is designed to allow developers to reuse code efficiently by breaking down various functionalities into modular units. 
 
@@ -7,7 +7,7 @@ This work has been developed with scalability and modularity in mind to support 
 
 ---
 
-## 📋 Project Overview
+📋 Project Overview
 
 The Modular-MERN-Backend provides a strong foundation for building backend systems using the MERN stack (MongoDB, Express, React, Node.js). The architecture includes modules for essential features such as authentication, user management, payment processing, and many more, enabling faster project development by focusing on reusability and code separation.
 
@@ -15,7 +15,7 @@ This project was primarily developed for MKTECH as part of a backend solution ai
 
 ---
 
-## 📦 Available Modules
+📦 Available Modules
 
 Each module is designed to be independent and reusable across various projects. Below is a list of the available modules, with links to detailed documentation for each.
 
@@ -72,12 +72,14 @@ Each module is designed to be independent and reusable across various projects. 
 
 ---
 
-## 🚀 How to Get Started
+🚀 How to Get Started
 
-### Prerequisites:
+Prerequisites:
 - Node.js
 - MongoDB
 - Express
+
+```
 
 ### Installation
 
@@ -85,7 +87,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/Modular-MERN-Backend.git
-```
+
 
 Navigate into the directory:
 

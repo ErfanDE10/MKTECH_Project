@@ -1,4 +1,4 @@
-// mainRoutes.js
+// Main Routes
 const express = require('express');
 const { getMainPage } = require('../Controllers/mainController');
 const router = express.Router();

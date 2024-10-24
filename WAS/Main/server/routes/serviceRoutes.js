@@ -1,4 +1,4 @@
-// serviceRoutes.js
+// Service Routes
 const express = require('express');
 const { getServicePage } = require('../Controllers/serviceController');
 const router = express.Router();
